@@ -3,6 +3,8 @@ param (
     [string]$RepoName
 )
 
+Push-Location $RepoName
+
 $packageJSON = @"
 {
   "name": "device-detection-node",
@@ -73,6 +75,10 @@ New-Item -ItemType File -Path "package.json" -Force | Out-Null
 Set-Content -Path "package.json" -Value $packageJSON
 Write-Output "Package configuration file created successfully."
 
+Pop-Location
+
 ./node/setup-environment.ps1 -RepoName $RepoName
 
-exit $LASTEXITCODE
+if ($LASTEXITCODE -ne 0) {
+  exit $LASTEXITCODE
+}

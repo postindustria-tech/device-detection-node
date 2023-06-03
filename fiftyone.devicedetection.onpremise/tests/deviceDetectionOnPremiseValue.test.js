@@ -40,6 +40,9 @@ const fs = require('fs');
 const LiteDataFile = (process.env.directory || __dirname) + '/../device-detection-cxx/device-detection-data/51Degrees-LiteV4.1.hash';
 const DataFile = (process.env.directory || __dirname) + '/51Degrees.hash';
 
+console.log(LiteDataFile)
+console.log(DataFile)
+
 const MobileUserAgent =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) ' +
   'AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile' +
@@ -60,172 +63,172 @@ describe('deviceDetectionOnPremise', () => {
     }
   });
 
-  // // Check that for a successful detection, all properties loaded by the engine
-  // // are accessible in the results.
-  // test('Available Properties', async () => {
-  //   var engine = new EngineBuilder({
-  //     dataFilePath: DataFile,
-  //     autoUpdate: false,
-  //     licenceKeys: ''
-  //   });
-  //   var pipeline = new PipelineBuilder()
-  //     .add(engine)
-  //     .build();
-  //
-  //   const flowData = pipeline.createFlowData();
-  //
-  //   flowData.evidence.add('header.user-agent', MobileUserAgent);
-  //
-  //   await flowData.process();
-  //
-  //   Object.keys(engine.properties).forEach(key => {
-  //     var apv = flowData.device[key];
-  //     expect(apv).not.toBeNull();
-  //     expect(apv).toBeDefined();
-  //     if (apv.hasValue === true) {
-  //       if (apv.value !== null && apv.value !== undefined) {
-  //         console.log(`${key}: ${apv.value}`);
-  //       } else {
-  //         throw new Error(`${key}.value should not be null`);
-  //       }
-  //     } else {
-  //       if (apv.noValueMessage !== null && apv.noValueMessage !== undefined) {
-  //         console.log(`${key}: ${apv.noValueMessage}`);
-  //       } else {
-  //         throw new Error(`${key}.noValueMessage should not be null`);
-  //       }
-  //     }
-  //   });
-  // });
-  //
-  // // Validate the descriptions of match metrics properties.
-  // test('Match Metrics Description', async () => {
-  //   var engine = new EngineBuilder({
-  //     dataFilePath: DataFile,
-  //     autoUpdate: false,
-  //     licenceKeys: ''
-  //   });
-  //   var pipeline = new PipelineBuilder()
-  //     .add(engine)
-  //     .build();
-  //
-  //   const flowData = pipeline.createFlowData();
-  //
-  //   flowData.evidence.add('header.user-agent', MobileUserAgent);
-  //
-  //   await flowData.process();
-  //
-  //   expect(engine.properties.deviceID.description).toBeDefined();
-  //   expect(engine.properties.deviceID.description).toEqual(constants.deviceIdDescription);
-  //   expect(engine.properties.userAgents.description).toBeDefined();
-  //   expect(engine.properties.userAgents.description).toEqual(constants.userAgentsDescription);
-  //   expect(engine.properties.difference.description).toBeDefined();
-  //   expect(engine.properties.difference.description).toEqual(constants.differenceDescription);
-  //   expect(engine.properties.method.description).toBeDefined();
-  //   expect(engine.properties.method.description).toEqual(constants.methodDescription);
-  //   expect(engine.properties.matchedNodes.description).toBeDefined();
-  //   expect(engine.properties.matchedNodes.description).toEqual(constants.matchedNodesDescription);
-  //   expect(engine.properties.drift.description).toBeDefined();
-  //   expect(engine.properties.drift.description).toEqual(constants.driftDescription);
-  //   expect(engine.properties.iterations.description).toBeDefined();
-  //   expect(engine.properties.iterations.description).toEqual(constants.iterationsDescription);
-  // });
-  //
-  // // Validate the the values for all properties returned are of the expected
-  // // type.
-  // test('Value Types', async () => {
-  //   var engine = new EngineBuilder({
-  //     dataFilePath: DataFile,
-  //     autoUpdate: false,
-  //     licenceKeys: ''
-  //   });
-  //   var pipeline = new PipelineBuilder()
-  //     .add(engine)
-  //     .build();
-  //
-  //   const flowData = pipeline.createFlowData();
-  //
-  //   flowData.evidence.add('header.user-agent', MobileUserAgent);
-  //
-  //   await flowData.process();
-  //
-  //   Object.keys(engine.properties).forEach(key => {
-  //     var property = engine.properties[key];
-  //     var expectedType = property.type;
-  //     var apv = flowData.device[key];
-  //     expect(apv).not.toBeNull();
-  //     expect(apv).toBeDefined();
-  //
-  //     expect(apv.value).toBe51DType(key, expectedType);
-  //   });
-  // });
-  //
-  // // Validate the the device id is returned for a detection and that it is not
-  // // null.
-  // test('DeviceID', async () => {
-  //   var engine = new EngineBuilder({
-  //     dataFilePath: DataFile,
-  //     autoUpdate: false,
-  //     licenceKeys: ''
-  //   });
-  //   var pipeline = new PipelineBuilder()
-  //     .add(engine)
-  //     .build();
-  //
-  //   const flowData = pipeline.createFlowData();
-  //
-  //   flowData.evidence.add('header.user-agent', MobileUserAgent);
-  //
-  //   await flowData.process();
-  //
-  //   var deviceID = flowData.device.deviceID;
-  //
-  //   expect(deviceID).not.toBeNull();
-  //   expect(deviceID).toBeDefined();
-  //
-  //   expect(deviceID.value).not.toBeNull();
-  //   expect(deviceID.value).toBeDefined();
-  //   expect(deviceID.value).not.toBe('');
-  // });
-  //
-  // // Validate that for a successful detection, the matched User Agents are
-  // // returned in the results.
-  // test('Matched User Agents', async () => {
-  //   var engine = new EngineBuilder({
-  //     dataFilePath: DataFile,
-  //     autoUpdate: false,
-  //     licenceKeys: ''
-  //   });
-  //   var pipeline = new PipelineBuilder()
-  //     .add(engine)
-  //     .build();
-  //
-  //   const flowData = pipeline.createFlowData();
-  //
-  //   flowData.evidence.add('header.user-agent', MobileUserAgent);
-  //
-  //   await flowData.process();
-  //
-  //   var userAgents = flowData.device.userAgents;
-  //
-  //   expect(userAgents).not.toBeNull();
-  //   expect(userAgents).toBeDefined();
-  //
-  //   expect(userAgents.hasValue).toBeTruthy();
-  //   expect(userAgents.value).not.toBeNull();
-  //   expect(userAgents.value).toBeDefined();
-  //
-  //   expect(userAgents.value.length).toBe(1);
-  //
-  //   userAgents.value.forEach(matchedUa => {
-  //     matchedUa.split(/[_{}]/g).forEach(substring => {
-  //       expect(MobileUserAgent.includes(substring)).toBeTruthy();
-  //       var index = matchedUa.indexOf(substring);
-  //       var original = MobileUserAgent.substring(index, substring.length);
-  //       expect(substring).toEqual(original);
-  //     });
-  //   });
-  // });
+  // Check that for a successful detection, all properties loaded by the engine
+  // are accessible in the results.
+  test('Available Properties', async () => {
+    var engine = new EngineBuilder({
+      dataFilePath: DataFile,
+      autoUpdate: false,
+      licenceKeys: ''
+    });
+    var pipeline = new PipelineBuilder()
+      .add(engine)
+      .build();
+
+    const flowData = pipeline.createFlowData();
+
+    flowData.evidence.add('header.user-agent', MobileUserAgent);
+
+    await flowData.process();
+
+    Object.keys(engine.properties).forEach(key => {
+      var apv = flowData.device[key];
+      expect(apv).not.toBeNull();
+      expect(apv).toBeDefined();
+      if (apv.hasValue === true) {
+        if (apv.value !== null && apv.value !== undefined) {
+          console.log(`${key}: ${apv.value}`);
+        } else {
+          throw new Error(`${key}.value should not be null`);
+        }
+      } else {
+        if (apv.noValueMessage !== null && apv.noValueMessage !== undefined) {
+          console.log(`${key}: ${apv.noValueMessage}`);
+        } else {
+          throw new Error(`${key}.noValueMessage should not be null`);
+        }
+      }
+    });
+  });
+
+  // Validate the descriptions of match metrics properties.
+  test('Match Metrics Description', async () => {
+    var engine = new EngineBuilder({
+      dataFilePath: DataFile,
+      autoUpdate: false,
+      licenceKeys: ''
+    });
+    var pipeline = new PipelineBuilder()
+      .add(engine)
+      .build();
+
+    const flowData = pipeline.createFlowData();
+
+    flowData.evidence.add('header.user-agent', MobileUserAgent);
+
+    await flowData.process();
+
+    expect(engine.properties.deviceID.description).toBeDefined();
+    expect(engine.properties.deviceID.description).toEqual(constants.deviceIdDescription);
+    expect(engine.properties.userAgents.description).toBeDefined();
+    expect(engine.properties.userAgents.description).toEqual(constants.userAgentsDescription);
+    expect(engine.properties.difference.description).toBeDefined();
+    expect(engine.properties.difference.description).toEqual(constants.differenceDescription);
+    expect(engine.properties.method.description).toBeDefined();
+    expect(engine.properties.method.description).toEqual(constants.methodDescription);
+    expect(engine.properties.matchedNodes.description).toBeDefined();
+    expect(engine.properties.matchedNodes.description).toEqual(constants.matchedNodesDescription);
+    expect(engine.properties.drift.description).toBeDefined();
+    expect(engine.properties.drift.description).toEqual(constants.driftDescription);
+    expect(engine.properties.iterations.description).toBeDefined();
+    expect(engine.properties.iterations.description).toEqual(constants.iterationsDescription);
+  });
+
+  // Validate the the values for all properties returned are of the expected
+  // type.
+  test('Value Types', async () => {
+    var engine = new EngineBuilder({
+      dataFilePath: DataFile,
+      autoUpdate: false,
+      licenceKeys: ''
+    });
+    var pipeline = new PipelineBuilder()
+      .add(engine)
+      .build();
+
+    const flowData = pipeline.createFlowData();
+
+    flowData.evidence.add('header.user-agent', MobileUserAgent);
+
+    await flowData.process();
+
+    Object.keys(engine.properties).forEach(key => {
+      var property = engine.properties[key];
+      var expectedType = property.type;
+      var apv = flowData.device[key];
+      expect(apv).not.toBeNull();
+      expect(apv).toBeDefined();
+
+      expect(apv.value).toBe51DType(key, expectedType);
+    });
+  });
+
+  // Validate the the device id is returned for a detection and that it is not
+  // null.
+  test('DeviceID', async () => {
+    var engine = new EngineBuilder({
+      dataFilePath: DataFile,
+      autoUpdate: false,
+      licenceKeys: ''
+    });
+    var pipeline = new PipelineBuilder()
+      .add(engine)
+      .build();
+
+    const flowData = pipeline.createFlowData();
+
+    flowData.evidence.add('header.user-agent', MobileUserAgent);
+
+    await flowData.process();
+
+    var deviceID = flowData.device.deviceID;
+
+    expect(deviceID).not.toBeNull();
+    expect(deviceID).toBeDefined();
+
+    expect(deviceID.value).not.toBeNull();
+    expect(deviceID.value).toBeDefined();
+    expect(deviceID.value).not.toBe('');
+  });
+
+  // Validate that for a successful detection, the matched User Agents are
+  // returned in the results.
+  test('Matched User Agents', async () => {
+    var engine = new EngineBuilder({
+      dataFilePath: DataFile,
+      autoUpdate: false,
+      licenceKeys: ''
+    });
+    var pipeline = new PipelineBuilder()
+      .add(engine)
+      .build();
+
+    const flowData = pipeline.createFlowData();
+
+    flowData.evidence.add('header.user-agent', MobileUserAgent);
+
+    await flowData.process();
+
+    var userAgents = flowData.device.userAgents;
+
+    expect(userAgents).not.toBeNull();
+    expect(userAgents).toBeDefined();
+
+    expect(userAgents.hasValue).toBeTruthy();
+    expect(userAgents.value).not.toBeNull();
+    expect(userAgents.value).toBeDefined();
+
+    expect(userAgents.value.length).toBe(1);
+
+    userAgents.value.forEach(matchedUa => {
+      matchedUa.split(/[_{}]/g).forEach(substring => {
+        expect(MobileUserAgent.includes(substring)).toBeTruthy();
+        var index = matchedUa.indexOf(substring);
+        var original = MobileUserAgent.substring(index, substring.length);
+        expect(substring).toEqual(original);
+      });
+    });
+  });
 });
 
 // Extend expect object.

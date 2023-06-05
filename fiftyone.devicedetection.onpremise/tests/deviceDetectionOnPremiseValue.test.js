@@ -40,9 +40,6 @@ const fs = require('fs');
 const LiteDataFile = (process.env.directory || __dirname) + '/../device-detection-cxx/device-detection-data/51Degrees-LiteV4.1.hash';
 const DataFile = (process.env.directory || __dirname) + '/51Degrees.hash';
 
-console.log(LiteDataFile)
-console.log(DataFile)
-
 const MobileUserAgent =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) ' +
   'AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile' +

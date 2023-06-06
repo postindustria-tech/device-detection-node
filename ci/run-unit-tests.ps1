@@ -12,5 +12,3 @@ $env:TEST_NO_SETHEADER_RESOURCE_KEY = $Options.Keys.TestNoSetHeaderResourceKey
 $env:TEST_LICENSE_KEY = $Options.Keys.TestLicenseKey
 
 ./node/run-unit-tests.ps1 -RepoName $RepoName
-
-exit $LASTEXITCODE

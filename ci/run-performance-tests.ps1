@@ -1,8 +1,25 @@
 param (
     [Parameter(Mandatory=$true)]
-    [string]$RepoName
+    [string]$RepoName,
+    [Parameter(Mandatory=$true)]
+    [string]$Name
 )
 
-./node/run-performance-tests.ps1 -RepoName $RepoName
+Push-Location $RepoName
 
-exit $LASTEXITCODE
+$perfSummary = New-Item -ItemType directory -Path $RepoName/test-results/performance-summary -Force
+
+try
+{
+    Write-Output "Running performance tests"
+    $env:JEST_JUNIT_OUTPUT_DIR = 'test-results/performance'
+    npm run performance-test || $($testsFailed = $true)
+
+    Get-Content -Path performance_test_summary.json
+    Move-Item -Path performance_test_summary.json -Destination $perfSummary/results_$Name.json || $(throw "failed to move summary")
+    Write-Output "OK"
+
+} finally {
+    Pop-Location
+}
+

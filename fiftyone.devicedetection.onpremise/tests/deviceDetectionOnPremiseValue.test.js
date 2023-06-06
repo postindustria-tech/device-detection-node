@@ -63,43 +63,43 @@ describe('deviceDetectionOnPremise', () => {
     }
   });
 
-  // // Check that for a successful detection, all properties loaded by the engine
-  // // are accessible in the results.
-  // test('Available Properties', async () => {
-  //   var engine = new EngineBuilder({
-  //     dataFilePath: DataFile,
-  //     autoUpdate: false,
-  //     licenceKeys: ''
-  //   });
-  //   var pipeline = new PipelineBuilder()
-  //     .add(engine)
-  //     .build();
-  //
-  //   const flowData = pipeline.createFlowData();
-  //
-  //   flowData.evidence.add('header.user-agent', MobileUserAgent);
-  //
-  //   await flowData.process();
-  //
-  //   Object.keys(engine.properties).forEach(key => {
-  //     var apv = flowData.device[key];
-  //     expect(apv).not.toBeNull();
-  //     expect(apv).toBeDefined();
-  //     if (apv.hasValue === true) {
-  //       if (apv.value !== null && apv.value !== undefined) {
-  //         console.log(`${key}: ${apv.value}`);
-  //       } else {
-  //         throw new Error(`${key}.value should not be null`);
-  //       }
-  //     } else {
-  //       if (apv.noValueMessage !== null && apv.noValueMessage !== undefined) {
-  //         console.log(`${key}: ${apv.noValueMessage}`);
-  //       } else {
-  //         throw new Error(`${key}.noValueMessage should not be null`);
-  //       }
-  //     }
-  //   });
-  // });
+  // Check that for a successful detection, all properties loaded by the engine
+  // are accessible in the results.
+  test('Available Properties', async () => {
+    var engine = new EngineBuilder({
+      dataFilePath: DataFile,
+      autoUpdate: false,
+      licenceKeys: ''
+    });
+    var pipeline = new PipelineBuilder()
+      .add(engine)
+      .build();
+
+    const flowData = pipeline.createFlowData();
+
+    flowData.evidence.add('header.user-agent', MobileUserAgent);
+
+    await flowData.process();
+
+    Object.keys(engine.properties).forEach(key => {
+      var apv = flowData.device[key];
+      expect(apv).not.toBeNull();
+      expect(apv).toBeDefined();
+      if (apv.hasValue === true) {
+        if (apv.value !== null && apv.value !== undefined) {
+          console.log(`${key}: ${apv.value}`);
+        } else {
+          throw new Error(`${key}.value should not be null`);
+        }
+      } else {
+        if (apv.noValueMessage !== null && apv.noValueMessage !== undefined) {
+          console.log(`${key}: ${apv.noValueMessage}`);
+        } else {
+          throw new Error(`${key}.noValueMessage should not be null`);
+        }
+      }
+    });
+  });
 
   // Validate the descriptions of match metrics properties.
   test('Match Metrics Description', async () => {

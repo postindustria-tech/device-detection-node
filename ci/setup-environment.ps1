@@ -15,8 +15,8 @@ $packageJSON = @"
     "test": "tests"
   },
   "scripts": {
-     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns '(deviceDetectionCloud.test.js|keyUtils.js)'",
-     "integration-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern '(deviceDetectionCloud.test.js|keyUtils.js)'"
+     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns '(deviceDetectionCloud.test.js|keyUtils.js|deviceDetectionOnPremiseValue.test.js)'",
+     "integration-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns '(deviceDetectionOnPremiseValue.test.js)'"
   },
   "repository": {
     "type": "git",

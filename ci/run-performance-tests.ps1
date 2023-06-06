@@ -16,6 +16,9 @@ try
     npm run performance-test || $($testsFailed = $true)
 
     Get-Content -Path performance_test_summary.json
+
+    Write-Output "Path to perf results - $perfSummary/results_$Name.json"
+
     Move-Item -Path performance_test_summary.json -Destination $perfSummary/results_$Name.json || $(throw "failed to move summary")
     Write-Output "OK"
 

@@ -41,7 +41,7 @@ foreach ($file in $downloads.Keys) {
 }
 
 # Tests mutate this file, so we copy it
-Write-Output "Copying 'TAC-HashV41.hash' to '$deviceDetectionData/Enterprise-HashV41.hash'"
+Write-Output "Copying 'TAC-HashV41.hash' to '$deviceDetectionData/51Degrees.hash'"
 Copy-Item -Path $assets/TAC-HashV41.hash -Destination $deviceDetectionData/Enterprise-HashV41.hash
 
 # We can just symlink these

@@ -40,6 +40,16 @@ foreach ($file in $downloads.Keys) {
     }
 }
 
+$items = Get-ChildItem -Path $RepoName -Force
+
+foreach ($item in $items) {
+    if ($item.Attributes -band [System.IO.FileAttributes]::Directory) {
+        Write-Host "Directory: $($item.Name)"
+    } else {
+        Write-Host "File: $($item.Name)"
+    }
+}
+
 ## Tests mutate this file, so we copy it
 #Write-Output "Copying 'TAC-HashV41.hash' to '$RepoName/fiftyone.devicedetection.onpremise/tests/51Degrees.hash'"
 #Copy-Item -Path $assets/TAC-HashV41.hash -Destination $RepoName/fiftyone.devicedetection.onpremise/tests/51Degrees.hash

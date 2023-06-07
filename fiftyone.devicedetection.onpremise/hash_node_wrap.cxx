@@ -7060,7 +7060,7 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataSwig_getComponentId(const SwigV8
   ComponentMetaData *arg1 = (ComponentMetaData *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  byte result;
+  fdbyte result;
   
   if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ComponentMetaDataSwig_getComponentId.");
   
@@ -7101,7 +7101,7 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataSwig_getComponentId(const SwigV8
       SWIG_exception(SWIG_ValueError, e.what());
     }
   }
-  jsresult = SWIG_NewPointerObj((new byte(static_cast< const byte& >(result))), SWIGTYPE_p_byte, SWIG_POINTER_OWN |  0 );
+  jsresult = SWIG_NewPointerObj((new fdbyte(static_cast< const fdbyte& >(result))), SWIGTYPE_p_byte, SWIG_POINTER_OWN |  0 );
   
   
   SWIGV8_RETURN(jsresult);
@@ -7790,7 +7790,7 @@ static void _wrap_delete_ComponentMetaDataCollectionSwig(v8::Persistent<v8::Valu
 #endif
           
           if(proxy->swigCMemOwn && proxy->swigCObject) {
-            Collection< byte,ComponentMetaData > * arg1 = (Collection< byte,ComponentMetaData > *)proxy->swigCObject;
+            Collection< fdbyte,ComponentMetaData > * arg1 = (Collection< fdbyte,ComponentMetaData > *)proxy->swigCObject;
             delete arg1;
           }
           delete proxy;
@@ -7813,8 +7813,8 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataCollectionSwig_getByKey(const Sw
   SWIGV8_HANDLESCOPE();
   
   SWIGV8_VALUE jsresult;
-  Collection< byte,ComponentMetaData > *arg1 = (Collection< byte,ComponentMetaData > *) 0 ;
-  byte arg2 ;
+  Collection< fdbyte,ComponentMetaData > *arg1 = (Collection< fdbyte,ComponentMetaData > *) 0 ;
+  fdbyte arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -7825,18 +7825,18 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataCollectionSwig_getByKey(const Sw
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_CollectionT_byte_ComponentMetaData_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComponentMetaDataCollectionSwig_getByKey" "', argument " "1"" of type '" "Collection< byte,ComponentMetaData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComponentMetaDataCollectionSwig_getByKey" "', argument " "1"" of type '" "Collection< fdbyte,ComponentMetaData > *""'"); 
   }
-  arg1 = reinterpret_cast< Collection< byte,ComponentMetaData > * >(argp1);
+  arg1 = reinterpret_cast< Collection< fdbyte,ComponentMetaData > * >(argp1);
   {
     res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_byte,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ComponentMetaDataCollectionSwig_getByKey" "', argument " "2"" of type '" "byte""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ComponentMetaDataCollectionSwig_getByKey" "', argument " "2"" of type '" "fdbyte""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ComponentMetaDataCollectionSwig_getByKey" "', argument " "2"" of type '" "byte""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ComponentMetaDataCollectionSwig_getByKey" "', argument " "2"" of type '" "fdbyte""'");
     } else {
-      arg2 = *(reinterpret_cast< byte * >(argp2));
+      arg2 = *(reinterpret_cast< fdbyte * >(argp2));
     }
   }
   {
@@ -7886,7 +7886,7 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataCollectionSwig_getByIndex(const 
   SWIGV8_HANDLESCOPE();
   
   SWIGV8_VALUE jsresult;
-  Collection< byte,ComponentMetaData > *arg1 = (Collection< byte,ComponentMetaData > *) 0 ;
+  Collection< fdbyte,ComponentMetaData > *arg1 = (Collection< fdbyte,ComponentMetaData > *) 0 ;
   uint32_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -7898,9 +7898,9 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataCollectionSwig_getByIndex(const 
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_CollectionT_byte_ComponentMetaData_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComponentMetaDataCollectionSwig_getByIndex" "', argument " "1"" of type '" "Collection< byte,ComponentMetaData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComponentMetaDataCollectionSwig_getByIndex" "', argument " "1"" of type '" "Collection< fdbyte,ComponentMetaData > *""'"); 
   }
-  arg1 = reinterpret_cast< Collection< byte,ComponentMetaData > * >(argp1);
+  arg1 = reinterpret_cast< Collection< fdbyte,ComponentMetaData > * >(argp1);
   ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ComponentMetaDataCollectionSwig_getByIndex" "', argument " "2"" of type '" "uint32_t""'");
@@ -7954,7 +7954,7 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataCollectionSwig_getSize(const Swi
   SWIGV8_HANDLESCOPE();
   
   SWIGV8_VALUE jsresult;
-  Collection< byte,ComponentMetaData > *arg1 = (Collection< byte,ComponentMetaData > *) 0 ;
+  Collection< fdbyte,ComponentMetaData > *arg1 = (Collection< fdbyte,ComponentMetaData > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   uint32_t result;
@@ -7963,9 +7963,9 @@ static SwigV8ReturnValue _wrap_ComponentMetaDataCollectionSwig_getSize(const Swi
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_CollectionT_byte_ComponentMetaData_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComponentMetaDataCollectionSwig_getSize" "', argument " "1"" of type '" "Collection< byte,ComponentMetaData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComponentMetaDataCollectionSwig_getSize" "', argument " "1"" of type '" "Collection< fdbyte,ComponentMetaData > *""'"); 
   }
-  arg1 = reinterpret_cast< Collection< byte,ComponentMetaData > * >(argp1);
+  arg1 = reinterpret_cast< Collection< fdbyte,ComponentMetaData > * >(argp1);
   {
     try {
       result = (uint32_t)(arg1)->getSize();;
@@ -8792,7 +8792,7 @@ static SwigV8ReturnValue _wrap_MetaDataSwig_getComponents(const SwigV8Arguments 
   MetaData *arg1 = (MetaData *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  Collection< byte,ComponentMetaData > *result = 0 ;
+  Collection< fdbyte,ComponentMetaData > *result = 0 ;
   
   if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MetaDataSwig_getComponents.");
   
@@ -8803,7 +8803,7 @@ static SwigV8ReturnValue _wrap_MetaDataSwig_getComponents(const SwigV8Arguments 
   arg1 = reinterpret_cast< MetaData * >(argp1);
   {
     try {
-      result = (Collection< byte,ComponentMetaData > *)(arg1)->getComponents();;
+      result = (Collection< fdbyte,ComponentMetaData > *)(arg1)->getComponents();;
     }
     catch(FatalException& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
@@ -16904,7 +16904,7 @@ static void *_p_ResultsDeviceDetectionTo_p_ResultsBase(void *x, int *SWIGUNUSEDP
 }
 static swig_type_info _swigt__p_CollectionConfig = {"_p_CollectionConfig", "CollectionConfig *|p_CollectionConfig", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CollectionT_ValueMetaDataKey_ValueMetaData_t = {"_p_CollectionT_ValueMetaDataKey_ValueMetaData_t", "Collection< ValueMetaDataKey,ValueMetaData > *|p_CollectionT_ValueMetaDataKey_ValueMetaData_t", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_CollectionT_byte_ComponentMetaData_t = {"_p_CollectionT_byte_ComponentMetaData_t", "Collection< byte,ComponentMetaData > *|p_CollectionT_byte_ComponentMetaData_t", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_CollectionT_byte_ComponentMetaData_t = {"_p_CollectionT_byte_ComponentMetaData_t", "Collection< fdbyte,ComponentMetaData > *|p_CollectionT_byte_ComponentMetaData_t", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CollectionT_std__string_PropertyMetaData_t = {"_p_CollectionT_std__string_PropertyMetaData_t", "Collection< std::string,PropertyMetaData > *|p_CollectionT_std__string_PropertyMetaData_t", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CollectionT_uint32_t_ProfileMetaData_t = {"_p_CollectionT_uint32_t_ProfileMetaData_t", "Collection< uint32_t,ProfileMetaData > *|p_CollectionT_uint32_t_ProfileMetaData_t", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ComponentMetaData = {"_p_ComponentMetaData", "ComponentMetaData *|p_ComponentMetaData", 0, 0, (void*)0, 0};
@@ -16931,7 +16931,7 @@ static swig_type_info _swigt__p_ValueT_double_t = {"_p_ValueT_double_t", "p_Valu
 static swig_type_info _swigt__p_ValueT_int_t = {"_p_ValueT_int_t", "p_ValueT_int_t|Value< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ValueT_std__string_t = {"_p_ValueT_std__string_t", "p_ValueT_std__string_t|Value< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ValueT_std__vectorT_std__string_t_t = {"_p_ValueT_std__vectorT_std__string_t_t", "Value< std::vector< std::string > > *|p_ValueT_std__vectorT_std__string_t_t", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_byte = {"_p_byte", "byte *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_byte = {"_p_byte", "fdbyte *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};

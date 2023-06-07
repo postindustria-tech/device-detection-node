@@ -5,7 +5,7 @@ param (
     [string]$Version
 )
 
-$packages = "fiftyone.devicedetection", "fiftyone.devicedetection.cloud", "fiftyone.devicedetection.cloud", "fiftyone.devicedetection.shared"
+$packages = "fiftyone.devicedetection", "fiftyone.devicedetection.cloud", "fiftyone.devicedetection.onpremise", "fiftyone.devicedetection.shared"
 
 $noRemote = ""
 

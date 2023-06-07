@@ -1,9 +1,9 @@
 [
   {
-    "Name": "Ubuntu_Node_16.20.0",
+    "Name": "Ubuntu_Node_20.0.0",
     "Image": "ubuntu-latest",
     "Language": "node",
-    "LanguageVersion": "16.20.0",
+    "LanguageVersion": "20.0.0",
     "RunPerformance": true,
     "PackageRequirement": true
   }

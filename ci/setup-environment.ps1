@@ -15,8 +15,8 @@ $packageJSON = @"
     "test": "tests"
   },
   "scripts": {
-     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns '(deviceDetectionCloud.test.js | keyUtils.test.js | performance.test.js)'",
-     "integration-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern='(tacLookup.test.js|configurator.test.js|gettingStarted.test.js|metaData.test.js|nativeModelLookup.test.js|userAgentClientHints.test.js|deviceDetectionCloud.test.js)'",
+     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(deviceDetectionCloud.test.js | keyUtils.test.js | performance.test.js)'",
+     "integration-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(fiftyone.devicedetection.onpremise/*)' --testPathPattern='(tacLookup.test.js|configurator.test.js|gettingStarted.test.js|metaData.test.js|nativeModelLookup.test.js|userAgentClientHints.test.js|deviceDetectionCloud.test.js)'",
      "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js"
   },
   "repository": {

@@ -1,9 +1,9 @@
 [
   {
-    "Name": "Ubuntu_Node_18.20.0",
+    "Name": "Ubuntu_Node_18.16.0",
     "Image": "ubuntu-latest",
     "Language": "node",
-    "LanguageVersion": "18.20.0",
+    "LanguageVersion": "18.16.0",
     "RunPerformance": true,
     "PackageRequirement": true
   }

@@ -39,6 +39,8 @@ describe('Examples', () => {
     // Load configuration options
     const options = JSON.parse(fs.readFileSync(path.join(__dirname, '/51d.json')));
 
+    console.log(options)
+
     // Update element path with a full path
     OptionsExtension.updateElementPath(options, __dirname);
     OptionsExtension.setResourceKey(

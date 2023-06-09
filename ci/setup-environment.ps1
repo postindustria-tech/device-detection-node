@@ -5,6 +5,16 @@ param (
 
 Push-Location $RepoName
 
+$integrationScript = @"
+ "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern='(tacLookup.test.js|configurator.test.js|gettingStarted.test.js|metaData.test.js|nativeModelLookup.test.js|userAgentClientHints.test.js|deviceDetectionCloud.test.js)'"
+"@
+
+if($Options.Keys.UsePublishTests){
+  $integrationScript = @"
+"jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*)'"
+"@
+}
+
 $packageJSON = @"
 {
   "name": "device-detection-node",
@@ -15,9 +25,9 @@ $packageJSON = @"
     "test": "tests"
   },
   "scripts": {
-     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura ",
-     "integration-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(fiftyone.devicedetection.onpremise/*)' --testPathPattern='(tacLookup.test.js|configurator.test.js|gettingStarted.test.js|metaData.test.js|nativeModelLookup.test.js|userAgentClientHints.test.js|deviceDetectionCloud.test.js)'",
-     "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js"
+    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura",
+    "integration-test": $integrationScript,
+    "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js",
   },
   "repository": {
     "type": "git",

@@ -27,7 +27,7 @@ $packageJSON = @"
   "scripts": {
     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura",
     "integration-test": $integrationScript,
-    "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js",
+    "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js"
   },
   "repository": {
     "type": "git",

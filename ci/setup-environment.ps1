@@ -11,7 +11,7 @@ $integrationScript = @"
 
 if($Options.Keys.UsePublishTests){
   $integrationScript = @"
-"jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*)'"
+"jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*|fiftyone.devicedetection.onpremise/*)'"
 "@
 }
 

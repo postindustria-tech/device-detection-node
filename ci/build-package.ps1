@@ -9,6 +9,8 @@ $packages = "fiftyone.devicedetection", "fiftyone.devicedetection.cloud", "fifty
 
 $noRemote = ""
 
+./remove-examples.ps1 -Packages $packages
+
 ./node/build-package-npm.ps1 -RepoName $RepoName -Packages $packages -NoRemote $noRemote -Version $Version
 
 

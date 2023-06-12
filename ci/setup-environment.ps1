@@ -6,7 +6,7 @@ param (
 Push-Location $RepoName
 
 $integrationScript = @"
- "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern='(tacLookup.test.js|configurator.test.js|gettingStarted.test.js|metaData.test.js|nativeModelLookup.test.js|userAgentClientHints.test.js|deviceDetectionCloud.test.js)'"
+ "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern='(examples/*)' --testPathIgnorePatterns='(fiftyone.devicedetection.onpremise/*)'"
 "@
 
 if($Options.Keys.UsePublishTests){
@@ -25,7 +25,7 @@ $packageJSON = @"
     "test": "tests"
   },
   "scripts": {
-    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura",
+    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*|fiftyone.devicedetection.onpremise/*|performance.test.js)'"'",
     "integration-test": $integrationScript,
     "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js"
   },

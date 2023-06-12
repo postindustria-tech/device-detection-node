@@ -40,9 +40,6 @@ foreach ($file in $downloads.Keys) {
     }
 }
 
-## Tests mutate this file, so we copy it
-#Write-Output "Copying 'TAC-HashV41.hash' to '$RepoName/fiftyone.devicedetection.onpremise/tests/51Degrees.hash'"
-#Copy-Item -Path $assets/TAC-HashV41.hash -Destination $RepoName/fiftyone.devicedetection.onpremise/tests/51Degrees.hash
 
 # Tests mutate this file, so we copy it
 Write-Output "Copying 'TAC-HashV41.hash' to '$RepoName/fiftyone.devicedetection.onpremise/tests/51Degrees-LiteV4.1.hash'"

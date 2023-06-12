@@ -17,7 +17,7 @@ try
 
     Get-Content -Path performance_test_summary.json
 
-    Write-Output "Path to perf results - $perfSummary/results_$Name.json"
+    Write-Output "Path to performance results - $perfSummary/results_$Name.json"
 
     Move-Item -Path performance_test_summary.json -Destination $perfSummary/results_$Name.json || $(throw "failed to move summary")
     Write-Output "OK"

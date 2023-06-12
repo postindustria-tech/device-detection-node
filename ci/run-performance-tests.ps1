@@ -5,10 +5,9 @@ param (
     [string]$Name
 )
 
-Push-Location $RepoName
-
 $perfSummary = New-Item -ItemType directory -Path $RepoName/test-results/performance-summary -Force
 
+Push-Location $RepoName
 try
 {
     Write-Output "Running performance tests"

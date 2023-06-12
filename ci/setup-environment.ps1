@@ -25,7 +25,7 @@ $packageJSON = @"
     "test": "tests"
   },
   "scripts": {
-    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*|fiftyone.devicedetection.onpremise/*|performance.test.js)'"'",
+    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*|fiftyone.devicedetection.onpremise/*|performance.test.js)'",
     "integration-test": $integrationScript,
     "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js"
   },

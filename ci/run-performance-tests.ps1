@@ -22,6 +22,16 @@ try
     Move-Item -Path performance_test_summary.json -Destination $perfSummary/results_$Name.json || $(throw "failed to move summary")
     Write-Output "OK"
 
+    $items = Get-ChildItem -Path $perfSummary -Force
+
+    foreach ($item in $items) {
+        if ($item.Attributes -band [System.IO.FileAttributes]::Directory) {
+            Write-Host "Directory: $($item.Name)"
+        } else {
+            Write-Host "File: $($item.Name)"
+        }
+    }
+
 } finally {
     Pop-Location
 }

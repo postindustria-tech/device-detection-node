@@ -6,7 +6,7 @@ param (
 Push-Location $RepoName
 
 $integrationScript = @"
- "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=\"(examples/*)' --testPathIgnorePatterns='(fiftyone.devicedetection.onpremise/*)\""
+ "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=\"(examples/*)\" --testPathIgnorePatterns=\"(fiftyone.devicedetection.onpremise/*)\""
 "@
 
 if($Options.Keys.UsePublishTests){

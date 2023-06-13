@@ -6,12 +6,12 @@ param (
 Push-Location $RepoName
 
 $integrationScript = @"
- "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern='(examples/*)' --testPathIgnorePatterns='(fiftyone.devicedetection.onpremise/*)'"
+ "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=\"(examples/*)' --testPathIgnorePatterns='(fiftyone.devicedetection.onpremise/*)\""
 "@
 
 if($Options.Keys.UsePublishTests){
   $integrationScript = @"
-"jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*|fiftyone.devicedetection.onpremise/*)'"
+"jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns=\"(examples/*|fiftyone.devicedetection.onpremise/*)\""
 "@
 }
 
@@ -25,7 +25,7 @@ $packageJSON = @"
     "test": "tests"
   },
   "scripts": {
-    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns='(examples/*|fiftyone.devicedetection.onpremise/*|performance.test.js)'",
+    "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns=\"(examples/*|fiftyone.devicedetection.onpremise/*|performance.test.js)\"",
     "integration-test": $integrationScript,
     "performance-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=performance.test.js"
   },

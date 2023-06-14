@@ -40,8 +40,8 @@ const fs = require('fs');
 const LiteDataFile = (process.env.directory || __dirname) + '/../device-detection-cxx/device-detection-data/51Degrees-LiteV4.1.hash';
 const DataFile = (process.env.directory || __dirname) + '/51Degrees.hash';
 
-console.log(LiteDataFile)
-console.log(DataFile)
+console.log(LiteDataFile);
+console.log(DataFile);
 
 const MobileUserAgent =
   'Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) ' +
@@ -66,12 +66,12 @@ describe('deviceDetectionOnPremise', () => {
   // Check that for a successful detection, all properties loaded by the engine
   // are accessible in the results.
   test('Available Properties', async () => {
-    var engine = new EngineBuilder({
+    const engine = new EngineBuilder({
       dataFilePath: DataFile,
       autoUpdate: false,
       licenceKeys: ''
     });
-    var pipeline = new PipelineBuilder()
+    const pipeline = new PipelineBuilder()
       .add(engine)
       .build();
 
@@ -82,7 +82,7 @@ describe('deviceDetectionOnPremise', () => {
     await flowData.process();
 
     Object.keys(engine.properties).forEach(key => {
-      var apv = flowData.device[key];
+      const apv = flowData.device[key];
       expect(apv).not.toBeNull();
       expect(apv).toBeDefined();
       if (apv.hasValue === true) {
@@ -103,12 +103,12 @@ describe('deviceDetectionOnPremise', () => {
 
   // Validate the descriptions of match metrics properties.
   test('Match Metrics Description', async () => {
-    var engine = new EngineBuilder({
+    const engine = new EngineBuilder({
       dataFilePath: DataFile,
       autoUpdate: false,
       licenceKeys: ''
     });
-    var pipeline = new PipelineBuilder()
+    const pipeline = new PipelineBuilder()
       .add(engine)
       .build();
 
@@ -137,12 +137,12 @@ describe('deviceDetectionOnPremise', () => {
   // Validate the the values for all properties returned are of the expected
   // type.
   test('Value Types', async () => {
-    var engine = new EngineBuilder({
+    const engine = new EngineBuilder({
       dataFilePath: DataFile,
       autoUpdate: false,
       licenceKeys: ''
     });
-    var pipeline = new PipelineBuilder()
+    const pipeline = new PipelineBuilder()
       .add(engine)
       .build();
 
@@ -153,9 +153,9 @@ describe('deviceDetectionOnPremise', () => {
     await flowData.process();
 
     Object.keys(engine.properties).forEach(key => {
-      var property = engine.properties[key];
-      var expectedType = property.type;
-      var apv = flowData.device[key];
+      const property = engine.properties[key];
+      const expectedType = property.type;
+      const apv = flowData.device[key];
       expect(apv).not.toBeNull();
       expect(apv).toBeDefined();
 
@@ -166,12 +166,12 @@ describe('deviceDetectionOnPremise', () => {
   // Validate the the device id is returned for a detection and that it is not
   // null.
   test('DeviceID', async () => {
-    var engine = new EngineBuilder({
+    const engine = new EngineBuilder({
       dataFilePath: DataFile,
       autoUpdate: false,
       licenceKeys: ''
     });
-    var pipeline = new PipelineBuilder()
+    const pipeline = new PipelineBuilder()
       .add(engine)
       .build();
 
@@ -181,7 +181,7 @@ describe('deviceDetectionOnPremise', () => {
 
     await flowData.process();
 
-    var deviceID = flowData.device.deviceID;
+    const deviceID = flowData.device.deviceID;
 
     expect(deviceID).not.toBeNull();
     expect(deviceID).toBeDefined();
@@ -194,12 +194,12 @@ describe('deviceDetectionOnPremise', () => {
   // Validate that for a successful detection, the matched User Agents are
   // returned in the results.
   test('Matched User Agents', async () => {
-    var engine = new EngineBuilder({
+    const engine = new EngineBuilder({
       dataFilePath: DataFile,
       autoUpdate: false,
       licenceKeys: ''
     });
-    var pipeline = new PipelineBuilder()
+    const pipeline = new PipelineBuilder()
       .add(engine)
       .build();
 
@@ -209,7 +209,7 @@ describe('deviceDetectionOnPremise', () => {
 
     await flowData.process();
 
-    var userAgents = flowData.device.userAgents;
+    const userAgents = flowData.device.userAgents;
 
     expect(userAgents).not.toBeNull();
     expect(userAgents).toBeDefined();
@@ -223,8 +223,8 @@ describe('deviceDetectionOnPremise', () => {
     userAgents.value.forEach(matchedUa => {
       matchedUa.split(/[_{}]/g).forEach(substring => {
         expect(MobileUserAgent.includes(substring)).toBeTruthy();
-        var index = matchedUa.indexOf(substring);
-        var original = MobileUserAgent.substring(index, substring.length);
+        const index = matchedUa.indexOf(substring);
+        const original = MobileUserAgent.substring(index, substring.length);
         expect(substring).toEqual(original);
       });
     });
@@ -235,8 +235,8 @@ describe('deviceDetectionOnPremise', () => {
 expect.extend({
   // Method to validate a given value has the expected type.
   toBe51DType (received, name, fodType) {
-    var valueType = typeof received;
-    var valid = false;
+    const valueType = typeof received;
+    let valid = false;
 
     switch (fodType) {
       case 'bool':

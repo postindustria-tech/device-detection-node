@@ -151,16 +151,16 @@ eventEmitter.on('FinishProcessing', (calibration) => {
 
     timeMsec = (actualTime - calibrationTime) / msecToNanoSec;
     timeSec = (actualTime - calibrationTime) / secToNanoSec;
-    fs.writeFileSync("performance_test_summary.json", JSON.stringify({
+    fs.writeFileSync('performance_test_summary.json', JSON.stringify({
       HigherIsBetter: {
         Detections: userAgentsCount,
-        DetectionsPerSecond: userAgentsCount / timeSec,
+        DetectionsPerSecond: userAgentsCount / timeSec
       },
       LowerIsBetter: {
         RuntimeSeconds: timeSec,
-        AvgMillisecsPerDetection: timeMsec / userAgentsCount,
+        AvgMillisecsPerDetection: timeMsec / userAgentsCount
       }
-    }, null, 4))
+    }, null, 4));
   }
 });
 

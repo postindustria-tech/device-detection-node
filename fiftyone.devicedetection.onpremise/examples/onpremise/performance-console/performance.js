@@ -90,6 +90,8 @@ const datafile = args.datafile !== undefined ? args.datafile : ExampleUtils.find
 const uafile = args.evidence !== undefined ? args.evidence : ExampleUtils.findFile(UA_CSV);
 const jsonoutput = args.jsonoutput;
 
+console.log(jsonoutput)
+
 // Check if files exists
 const fs = require('fs');
 if (!fs.existsSync(datafile)) {

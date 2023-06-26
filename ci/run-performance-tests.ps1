@@ -16,9 +16,9 @@ try
 
     node fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/performance.js --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
 
-    Write-Output "Path to performance results - fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/$perfJSONOutputName"
+    Write-Output "Path to performance results - /"
 
-    Move-Item -Path "fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/$perfJSONOutputName" -Destination $perfSummary || $(throw "failed to move summary")
+    Move-Item -Path $perfJSONOutputName -Destination $perfSummary || $(throw "failed to move summary")
     Write-Output "OK"
 
 } finally {

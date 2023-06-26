@@ -14,7 +14,7 @@ try
     $perfSummary = New-Item -ItemType directory -Path $RepoName/test-results/performance-summary -Force
     $perfJSONOutputName = "results_$Name.json";
 
-    node fiftyone.devicedetection.onpremise/examples/onpremse/performance-console/performance.js --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
+    node fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/performance.js --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
 
 #    Get-Content -Path "$perfSummary/$perfJSONOutputName"
 #

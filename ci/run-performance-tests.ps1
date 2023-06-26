@@ -16,12 +16,10 @@ try
 
     node fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/performance.js --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
 
-#    Get-Content -Path "$perfSummary/$perfJSONOutputName"
-#
-#    Write-Output "Path to performance results - $perfSummary/$perfJSONOutputName"
-#
-#    Move-Item -Path $perfJSONOutputName -Destination $perfSummary || $(throw "failed to move summary")
-#    Write-Output "OK"
+    Write-Output "Path to performance results - fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/$perfJSONOutputName"
+
+    Move-Item -Path "fiftyone.devicedetection.onpremise/examples/onpremise/performance-console/$perfJSONOutputName" -Destination $perfSummary || $(throw "failed to move summary")
+    Write-Output "OK"
 
 } finally {
     Pop-Location

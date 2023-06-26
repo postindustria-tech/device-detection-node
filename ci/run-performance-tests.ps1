@@ -18,7 +18,7 @@ try
 
     Write-Output "Path to performance results - /"
 
-    Move-Item -Path $perfJSONOutputName -Destination $perfSummary || $(throw "failed to move summary")
+    Move-Item -Path $perfJSONOutputName -Destination "$perfSummary/$perfJSONOutputName" || $(throw "failed to move summary")
     Write-Output "OK"
 
 } finally {

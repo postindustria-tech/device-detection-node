@@ -16,7 +16,7 @@ try
 
     node "./examples/onpremse/performance-console/performance.js" --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
 
-    Get-Content -Path $perfJSONOutputName
+    Get-Content -Path "$perfSummary/$perfJSONOutputName"
 
     Write-Output "Path to performance results - $perfSummary/results_$Name.json"
 

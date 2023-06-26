@@ -14,7 +14,7 @@ try
     $perfSummary = New-Item -ItemType directory -Path $RepoName/test-results/performance-summary -Force
     $perfJSONOutputName = "results_$Name.json";
 
-    Start-Process -FilePath "node" -ArgumentList "$RepoName/examples/onpremse/performance-console/performance.js", "--jsonoutput", $perfJSONOutputName -Wait || $($testsFailed = $true)
+    node "$RepoName/examples/onpremse/performance-console/performance.js" --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
 
     Get-Content -Path $perfJSONOutputName
 

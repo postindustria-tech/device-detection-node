@@ -14,14 +14,14 @@ try
     $perfSummary = New-Item -ItemType directory -Path $RepoName/test-results/performance-summary -Force
     $perfJSONOutputName = "results_$Name.json";
 
-    node "./examples/onpremse/performance-console/performance.js" --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
+    node ./examples/onpremse/performance-console/performance.js --jsonoutput $perfJSONOutputName || $($testsFailed = $true)
 
-    Get-Content -Path "$perfSummary/$perfJSONOutputName"
-
-    Write-Output "Path to performance results - $perfSummary/results_$Name.json"
-
-    Move-Item -Path $perfJSONOutputName -Destination $perfSummary || $(throw "failed to move summary")
-    Write-Output "OK"
+#    Get-Content -Path "$perfSummary/$perfJSONOutputName"
+#
+#    Write-Output "Path to performance results - $perfSummary/$perfJSONOutputName"
+#
+#    Move-Item -Path $perfJSONOutputName -Destination $perfSummary || $(throw "failed to move summary")
+#    Write-Output "OK"
 
 } finally {
     Pop-Location

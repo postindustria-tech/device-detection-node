@@ -9,6 +9,8 @@ $packages = "fiftyone.devicedetection", "fiftyone.devicedetection.cloud", "fifty
 
 $noRemote = ""
 
+Copy-Item -Path "./package-files" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
+
 ./node/build-package-npm.ps1 -RepoName $RepoName -Packages $packages -NoRemote $noRemote -Version $Version
 
 

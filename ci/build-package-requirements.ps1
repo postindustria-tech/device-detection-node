@@ -48,8 +48,10 @@ $nodeMajorVersion = $nodeVersion.TrimStart('v').Split('.')[0]
 $fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
 Rename-Item -Path "./build/FiftyOneDeviceDetectionHashV4.node" -NewName $fileName
 
+Get-ChildItem -Path "$RepoName/fiftyone.devicedetection.onpremise/build"
+
 # Storing binary artifact
-Copy-Item -Path "./build/Release/FiftyOneDeviceDetectionHashV4.node" -Destination "../../package-files/$fileName"
+Copy-Item -Path "./build/$fileName" -Destination "../../package-files/$fileName"
 
 # Installing package for some examples
 npm install n-readlines || $(throw "ERROR: Failed to install n-readlines")

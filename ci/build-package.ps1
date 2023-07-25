@@ -15,7 +15,7 @@ $noRemote = ""
 New-Item -ItemType Directory -Path "$RepoName/fiftyone.devicedetection.onpremise/build" | Out-Null
 
 # Copying all binaries to package build folder
-Copy-Item -Path "./package-files/*.node" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
+Copy-Item -Path "./package-files/*/*.node" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
 
 # Store the output in a variable for later use.
 $items = Get-ChildItem -Path "./package-files";

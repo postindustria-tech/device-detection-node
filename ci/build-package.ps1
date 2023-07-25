@@ -11,6 +11,8 @@ $noRemote = ""
 
 Copy-Item -Path "./package-files" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
 
+Get-ChildItem -Path "$RepoName/fiftyone.devicedetection.onpremise/build"
+
 ./node/build-package-npm.ps1 -RepoName $RepoName -Packages $packages -NoRemote $noRemote -Version $Version
 
 

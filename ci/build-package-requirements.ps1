@@ -49,19 +49,20 @@ Rename-Item -Path "./build/Release/FiftyOneDeviceDetectionHashV4.node" -NewName 
 $destinationFolder = "C:\path\to\destination_folder\"
 
 # Check if the destination folder exists; if not, create it.
-if (-Not (Test-Path "../package-files" -PathType Container)) {
-    New-Item -ItemType Directory -Path "../package-files" | Out-Null
+if (-Not (Test-Path "../../package-files" -PathType Container)) {
+    New-Item -ItemType Directory -Path "../../package-files" | Out-Null
 }
 
 # Move build result from release folder to lower level (build folder)
-Move-Item -Path "./build/Release/$fileName" -Destination "../package-files"
+Move-Item -Path "./build/Release/$fileName" -Destination "../../package-files"
 
-$items = Get-ChildItem -Path "../package-files"
+$items = Get-ChildItem -Path "../../package-files"
 
 # Use the $items variable as needed in your script.
 # For example, you can iterate through the items, log them to a file, or perform additional actions.
 foreach ($item in $items) {
-Write-Host $item.FullName
+    Write-Host "LOGGER:"
+    Write-Host $item.FullName
 }
 
 

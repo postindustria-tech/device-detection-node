@@ -41,7 +41,8 @@ $nodeVersion = node --version  || $(throw "ERROR: Failed to get node version")
 $nodeMajorVersion = $nodeVersion.TrimStart('v').Split('.')[0]
 
 # Renaming building config file
-$fileName = "./build/Release/FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
+$fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
+
 Rename-Item -Path "./build/Release/FiftyOneDeviceDetectionHashV4.node" -NewName $fileName
 # Move build result from release folder to lower level (build folder)
 Move-Item -Path "./build/Release/$fileName" -Destination "../../package-files/"

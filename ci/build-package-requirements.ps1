@@ -48,7 +48,7 @@ $nodeMajorVersion = $nodeVersion.TrimStart('v').Split('.')[0]
 $fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
 Rename-Item -Path "./build/FiftyOneDeviceDetectionHashV4.node" -NewName $fileName
 
-$items = Get-ChildItem -Path "./fiftyone.devicedetection.onpremise/build"
+$items = Get-ChildItem -Path "./build"
 
 # Use the $items variable as needed in your script.
 # For example, you can iterate through the items, log them to a file, or perform additional actions.

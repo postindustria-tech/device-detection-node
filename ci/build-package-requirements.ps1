@@ -48,7 +48,12 @@ $nodeMajorVersion = $nodeVersion.TrimStart('v').Split('.')[0]
 $fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
 Rename-Item -Path "./build/FiftyOneDeviceDetectionHashV4.node" -NewName $fileName
 
-$items = Get-ChildItem -Path "../"
+
+
+# Storing binary artifact
+Copy-Item -Path "./build/$fileName" -Destination "./package-files/"
+
+$items = Get-ChildItem -Path "./package-files"
 
 # Use the $items variable as needed in your script.
 # For example, you can iterate through the items, log them to a file, or perform additional actions.
@@ -56,9 +61,6 @@ foreach ($item in $items) {
 Write-Host $item.FullName
 }
 
-
-# Storing binary artifact
-Copy-Item -Path "./build/$fileName" -Destination "../package-files/"
 
 # Installing package for some examples
 npm install n-readlines || $(throw "ERROR: Failed to install n-readlines")

@@ -44,10 +44,19 @@ $nodeMajorVersion = $nodeVersion.TrimStart('v').Split('.')[0]
 $fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
 
 Rename-Item -Path "./build/Release/FiftyOneDeviceDetectionHashV4.node" -NewName $fileName
-# Move build result from release folder to lower level (build folder)
-Move-Item -Path "./build/Release/$fileName" -Destination "../../package-files/"
 
-$items = Get-ChildItem -Path "./package-files"
+# Replace "destination_folder\" with the path of the destination folder.
+$destinationFolder = "C:\path\to\destination_folder\"
+
+# Check if the destination folder exists; if not, create it.
+if (-Not (Test-Path "../package-files" -PathType Container)) {
+    New-Item -ItemType Directory -Path "../package-files" | Out-Null
+}
+
+# Move build result from release folder to lower level (build folder)
+Move-Item -Path "./build/Release/$fileName" -Destination "../package-files"
+
+$items = Get-ChildItem -Path "../package-files"
 
 # Use the $items variable as needed in your script.
 # For example, you can iterate through the items, log them to a file, or perform additional actions.

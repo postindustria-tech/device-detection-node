@@ -18,7 +18,7 @@ New-Item -ItemType Directory -Path "$RepoName/fiftyone.devicedetection.onpremise
 Copy-Item -Path "./package-files/*.node" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
 
 # Store the output in a variable for later use.
-$items = Get-ChildItem -Path "./packages-files";
+$items = Get-ChildItem -Path "./";
 
 # Use the $items variable as needed in your script.
 # For example, you can iterate through the items, log them to a file, or perform additional actions.

@@ -58,7 +58,7 @@ Write-Host $item.FullName
 
 
 # Storing binary artifact
-Copy-Item -Path "./build/$fileName" -Destination "../../package-files/$fileName"
+Copy-Item -Path "./build/$fileName" -Destination "../../package-files/"
 
 # Installing package for some examples
 npm install n-readlines || $(throw "ERROR: Failed to install n-readlines")

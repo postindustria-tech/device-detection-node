@@ -9,7 +9,7 @@ $packages = "fiftyone.devicedetection", "fiftyone.devicedetection.cloud", "fifty
 
 $noRemote = ""
 
-Copy-Item -Path "./package-files" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
+Copy-Item -Path "./package-files/package_Ubuntu_Node_16/package-files" -Destination "$RepoName/fiftyone.devicedetection.onpremise/build" -Recurse
 
 Get-ChildItem -Path "$RepoName/fiftyone.devicedetection.onpremise/build"
 

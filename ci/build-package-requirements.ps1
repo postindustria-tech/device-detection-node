@@ -49,7 +49,7 @@ $fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
 Rename-Item -Path "./build/FiftyOneDeviceDetectionHashV4.node" -NewName $fileName
 
 # Storing binary artifact
-Copy-Item -Path "./build/$fileName" -Destination "../package-files/"
+Copy-Item -Path "./build/$fileName" -Destination "../../package-files/$fileName"
 
 # Installing package for some examples
 npm install n-readlines || $(throw "ERROR: Failed to install n-readlines")

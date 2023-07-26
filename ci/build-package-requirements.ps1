@@ -40,6 +40,9 @@ node-gyp build || $(throw "ERROR: Failed build with node-gyp")
 $nodeVersion = node --version  || $(throw "ERROR: Failed to get node version")
 $nodeMajorVersion = $nodeVersion.TrimStart('v').Split('.')[0]
 
+Write-Output "NODE VERSION:"
+Write-Output nodeMajorVersion
+
 # Renaming building config file
 $fileName = "FiftyOneDeviceDetectionHashV4-$os-$nodeMajorVersion.node"
 

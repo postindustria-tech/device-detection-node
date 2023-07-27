@@ -3,9 +3,6 @@ param (
     [string]$RepoName
 )
 
-$packageWithExtenssions = "fiftyone.devicedetection.onpremise";
+$packagesWithExtensions = "fiftyone.devicedetection.onpremise";
 
-Push-Location $RepoName
-Push-Location $packageWithExtenssions
-
-./node/build-extension.ps1 -PackageName $packageWithExtenssions
+./node/build-package-requirements.ps1 -RepoName $RepoName -Packages $packagesWithExtensions

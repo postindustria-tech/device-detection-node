@@ -94,4 +94,10 @@ if (myLicenseKey === '!!YOUR_LICENSE_KEY!!') {
   // To monitor the pipeline we can put in listeners for various log events.
   // Valid types are info, debug, warn, error
   pipeline.on('error', console.error);
+
+  // Exit auto update process
+  setTimeout(() => {
+    console.log('Exiting auto update process');
+    process.exit(1);
+  }, 3000)
 }

@@ -58,7 +58,7 @@ const datafile = args.length > 0 ? args[0] : ExampleUtils.findFile(LITE_V_4_1_HA
 // Set your license key, if you don't have a license key already you can
 // obtain one by subscribing to a 51Degrees bundle: https://51degrees.com/pricing
 
-const myLicenseKey = process.env.LICENSE_KEY || '!!YOUR_LICENSE_KEY!!';
+const myLicenseKey = process.env.LICENSE_KEY || 'FLVAAAS7TAAASA6CEJAEAW22HDBQMX6CTF6KJ4DHQ2GGFDE4MQDMC99R5K65Y98HPTQC7MS38V7WN688MBL28GB';
 
 if (myLicenseKey === '!!YOUR_LICENSE_KEY!!') {
   console.log("You need a license key to run this example, if you don't have one already " +
@@ -104,4 +104,10 @@ if (myLicenseKey === '!!YOUR_LICENSE_KEY!!') {
   // To monitor the pipeline we can put in listeners for various log events.
   // Valid types are info, debug, warn, error
   pipeline.on('error', console.error);
+
+  // Exit auto update process
+  setTimeout(() => {
+    console.log('Exiting auto update process');
+    process.exit(1);
+  }, 3000)
 }

@@ -257,6 +257,40 @@ describe('deviceDetectionOnPremise', () => {
       dataUpdateUseUrlFormatter: false
     }).build()
   }, 20000);
+
+  test('Properties for on-premise engine - Data File Update - 404 Status Code', done => {
+    let requestCounter = 0;
+    const PORT = 3000;
+
+    const server = http.createServer((req, res) => {
+      requestCounter++;
+      res.writeHead(404 );
+      res.end();
+    }).listen(PORT);
+
+
+    let pipeline = new FiftyOneDegreesDeviceDetectionOnPremise.DeviceDetectionOnPremisePipelineBuilder({
+      dataFile: DataFile,
+      updateOnStart: true,
+      autoUpdate: true,
+      dataUpdateUrl: `http://localhost:${PORT}`,
+      dataUpdateVerifyMd5: false,
+      dataUpdateUseUrlFormatter: false
+    }).build()
+
+
+
+    pipeline.on("error", err => {
+      expect(err.indexOf('404')!== -1).toBe(true);
+    })
+
+    setTimeout(() => {
+      expect(requestCounter).toBe(1);
+      server.close();
+      done();
+    }, 1000)
+
+  }, 20000);
 });
 
 afterAll(() => {

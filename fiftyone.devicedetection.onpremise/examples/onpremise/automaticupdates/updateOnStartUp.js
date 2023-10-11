@@ -58,7 +58,7 @@ const datafile = args.length > 0 ? args[0] : ExampleUtils.findFile(LITE_V_4_1_HA
 // Set your license key, if you don't have a license key already you can
 // obtain one by subscribing to a 51Degrees bundle: https://51degrees.com/pricing
 
-const myLicenseKey = process.env.LICENSE_KEY || 'FLVAAAS7TAAASA6CEJAEAW22HDBQMX6CTF6KJ4DHQ2GGFDE4MQDMC99R5K65Y98HPTQC7MS38V7WN688MBL28GB';
+const myLicenseKey = process.env.LICENSE_KEY || '!!YOUR_LICENSE_KEY!!';
 
 if (myLicenseKey === '!!YOUR_LICENSE_KEY!!') {
   console.log("You need a license key to run this example, if you don't have one already " +
@@ -89,6 +89,7 @@ if (myLicenseKey === '!!YOUR_LICENSE_KEY!!') {
     licenceKeys: myLicenseKey,
     // Enable automatic updates.
     autoUpdate: true,
+    baseUpdateUrl: customDataFileUpdateUrl, // passing a custom URL
     // Enable update on startup, the auto update system
     // will be used to check for an update before the
     // device detection engine is created.

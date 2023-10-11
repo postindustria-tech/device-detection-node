@@ -470,7 +470,6 @@ class DeviceDetectionOnPremise extends Engine {
         updateOnStart = false;
       }
     }
-
     // Construct datafile
     const dataFileSettings = {
       flowElement: this,

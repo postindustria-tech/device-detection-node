@@ -203,7 +203,7 @@ describe('deviceDetectionOnPremise', () => {
     done();
   });
 
-  // Check if dataUpdateUrl property are set correctly
+// Check if dataUpdateUrl property are set correctly
   // Check if dataUpdateVerifyMd5 property works as expected - default value = true
   // Check if dataUpdateUseUrlFormatter property does not append query params to update url - default value = true
   test('Properties for on-premise engine - Data File Update', done => {
@@ -296,3 +296,9 @@ describe('deviceDetectionOnPremise', () => {
 afterAll(() => {
   server.close();
 });
+
+afterAll(
+  () => {
+    server.close();
+  }
+)

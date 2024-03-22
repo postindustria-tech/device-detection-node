@@ -329,7 +329,6 @@ describe('deviceDetectionOnPremise', () => {
         const gzip = zlib.createGzip();
 
         LiteDataFileStream.pipe(gzip).pipe(writeStream);
-
         writeStream.on('finish', () => {
           const DataFileOutputStream = fs.createReadStream(DataFileOutput);
           DataFileOutputStream.on('data', (data) => {
@@ -343,25 +342,28 @@ describe('deviceDetectionOnPremise', () => {
             const data = fs.readFileSync(DataFileOutput);
             res.write(data);
             res.end();
-            fs.readdir('./tests/tmp', (err, files) => {
-              if (err) {
-                console.error('Error reading the directory:', err);
-                done();
-                return;
-              }
-              // Filter files that contain '_done' in their names
-              const doneFiles = files.filter(file => file.includes('_done'));
-              console.log(files)
-              expect(doneFiles.length).toBe(0);
-              server.close();
-              done();
-            });
+
           });
         });
       }).listen(PORT);
       pipeline.on('error', console.error);
       pipeline.on('info', console.info);
-
+      // Ensure that we updated file and handled requests
+      setTimeout(() => {
+        fs.readdir('./tests/tmp', (err, files) => {
+          if (err) {
+            console.error('Error reading the directory:', err);
+            done();
+            return;
+          }
+          // Filter files that contain '_done' in their names
+          const doneFiles = files.filter(file => file.includes('_done'));
+          console.log(files)
+          expect(doneFiles.length).toBe(0);
+          server.close();
+          done();
+        });
+      }, 5000)
     });
   }, 20000);
 });

@@ -225,40 +225,42 @@ describe('deviceDetectionOnPremise', () => {
     server = http.createServer((req, res) => {
       requestReceived = !!req;
       requestUrl = req.url;
-      const md5sum = crypto.createHash('md5');
-      const LiteDataFileStream = fs.createReadStream(DataFile);
-      const writeStream = fs.createWriteStream(DataFileOutput);
-      const gzip = zlib.createGzip();
+      if(requestUrl === '/update'){
+        const md5sum = crypto.createHash('md5');
+        const LiteDataFileStream = fs.createReadStream(DataFile);
+        const writeStream = fs.createWriteStream(DataFileOutput);
+        const gzip = zlib.createGzip();
 
-      LiteDataFileStream.pipe(gzip).pipe(writeStream);
+        LiteDataFileStream.pipe(gzip).pipe(writeStream);
 
-      writeStream.on('finish', () => {
-        const DataFileOutputStream = fs.createReadStream(DataFileOutput);
-        DataFileOutputStream.on('data', (data) => {
-          md5sum.update(data);
-        });
-        DataFileOutputStream.on('end', () => {
-          const md5Hash = md5sum.digest('hex');
-          res.writeHead(200, {
-            'Content-Type': 'application/octet-stream',
-            // 'Content-MD5': md5Hash
+        writeStream.on('finish', () => {
+          const DataFileOutputStream = fs.createReadStream(DataFileOutput);
+          DataFileOutputStream.on('data', (data) => {
+            md5sum.update(data);
           });
-          const data = fs.readFileSync(DataFileOutput);
-          res.write(data);
-          res.end();
-          // Checking that server receives request
-          expect(requestReceived).toBe(true);
-          expect(requestUrl).toBe('/');
-          server.close();
-          done();
+          DataFileOutputStream.on('end', () => {
+            const md5Hash = md5sum.digest('hex');
+            res.writeHead(200, {
+              'Content-Type': 'application/octet-stream',
+              // 'Content-MD5': md5Hash
+            });
+            const data = fs.readFileSync(DataFileOutput);
+            res.write(data);
+            res.end();
+            // Checking that server receives request
+            expect(requestReceived).toBe(true);
+            expect(requestUrl).toBe('/update');
+            server.close();
+            done();
+          });
         });
-      });
+      }
     }).listen(PORT);
     const pipeline = new FiftyOneDegreesDeviceDetectionOnPremise.DeviceDetectionOnPremisePipelineBuilder({
       dataFile: DataFile,
       updateOnStart: true,
       autoUpdate: false,
-      dataUpdateUrl: `http://localhost:${PORT}`,
+      dataUpdateUrl: `http://localhost:${PORT}/update`,
       dataUpdateVerifyMd5: false,
       dataUpdateUseUrlFormatter: false
     }).build();
@@ -270,9 +272,11 @@ describe('deviceDetectionOnPremise', () => {
     const PORT = 3000;
 
     const server = http.createServer((req, res) => {
-      requestCounter++;
-      res.writeHead(404 );
-      res.end();
+      if(req.url === '/update-error') {
+        requestCounter++;
+        res.writeHead(404);
+        res.end();
+      }
     }).listen(PORT);
 
 
@@ -280,7 +284,7 @@ describe('deviceDetectionOnPremise', () => {
       dataFile: DataFile,
       updateOnStart: true,
       autoUpdate: false,
-      dataUpdateUrl: `http://localhost:${PORT}`,
+      dataUpdateUrl: `http://localhost:${PORT}/update-error`,
       dataUpdateVerifyMd5: false,
       dataUpdateUseUrlFormatter: false
     }).build()
@@ -321,7 +325,7 @@ describe('deviceDetectionOnPremise', () => {
       }).build()
 
       server = http.createServer((req, res) => {
-        if(req.url === `http://localhost:${PORT}/temp`) {
+        if(req.url === `/temp`) {
           const LiteDataFileStream = fs.createReadStream(DataFileCopy);
           const writeStream = fs.createWriteStream(DataFileOutput);
           const gzip = zlib.createGzip();

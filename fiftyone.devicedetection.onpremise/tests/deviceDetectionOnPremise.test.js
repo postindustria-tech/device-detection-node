@@ -305,7 +305,6 @@ describe('deviceDetectionOnPremise', () => {
     const DataFileCopy = path.resolve((process.env.directory || __dirname) + '/51Degrees-LiteV4.1.hash');
     const tempDir = './tests/tmp';
 
-    let requestUrl = '';
     const PORT = 8080;
 
     fs.mkdir(tempDir, { recursive: true }, (err) => {
@@ -314,7 +313,7 @@ describe('deviceDetectionOnPremise', () => {
         dataFile: DataFileCopy,
         updateOnStart: true,
         autoUpdate: false,
-        dataUpdateUrl: `http://localhost:${PORT}`,
+        dataUpdateUrl: `http://localhost:${PORT}/temp`,
         dataUpdateVerifyMd5: false,
         dataUpdateUseUrlFormatter: false,
         createTempDataCopy: true,
@@ -322,47 +321,46 @@ describe('deviceDetectionOnPremise', () => {
       }).build()
 
       server = http.createServer((req, res) => {
-        requestUrl = req.url;
-        const md5sum = crypto.createHash('md5');
-        const LiteDataFileStream = fs.createReadStream(DataFileCopy);
-        const writeStream = fs.createWriteStream(DataFileOutput);
-        const gzip = zlib.createGzip();
+        if(req.url === `http://localhost:${PORT}/temp`) {
+          const LiteDataFileStream = fs.createReadStream(DataFileCopy);
+          const writeStream = fs.createWriteStream(DataFileOutput);
+          const gzip = zlib.createGzip();
 
-        LiteDataFileStream.pipe(gzip).pipe(writeStream);
-        writeStream.on('finish', () => {
-          const DataFileOutputStream = fs.createReadStream(DataFileOutput);
-          DataFileOutputStream.on('data', (data) => {
-            md5sum.update(data);
-          });
-          DataFileOutputStream.on('end', () => {
-            const md5Hash = md5sum.digest('hex');
-            res.writeHead(200, {
-              'Content-Type': 'application/octet-stream',
+          LiteDataFileStream.pipe(gzip).pipe(writeStream);
+          writeStream.on('finish', () => {
+            const DataFileOutputStream = fs.createReadStream(DataFileOutput);
+            DataFileOutputStream.on('end', () => {
+              res.writeHead(200, {
+                'Content-Type': 'application/octet-stream',
+              });
+              const data = fs.readFileSync(DataFileOutput);
+              res.write(data);
+              res.end();
+
             });
-            const data = fs.readFileSync(DataFileOutput);
-            res.write(data);
-            res.end();
-
           });
-        });
+
+          // Ensure that we updated file and handled requests
+          setTimeout(() => {
+            fs.readdir('./tests/tmp', (err, files) => {
+              if (err) {
+                console.error('Error reading the directory:', err);
+                done();
+                return;
+              }
+              // Filter files that contain '_done' in their names
+              const doneFiles = files.filter(file => file.includes('_done'));
+              expect(doneFiles.length).toBe(0);
+              server.close();
+              done();
+            });
+          }, 5000)
+        }
+
       }).listen(PORT);
       pipeline.on('error', console.error);
       pipeline.on('info', console.info);
-      // Ensure that we updated file and handled requests
-      setTimeout(() => {
-        fs.readdir('./tests/tmp', (err, files) => {
-          if (err) {
-            console.error('Error reading the directory:', err);
-            done();
-            return;
-          }
-          // Filter files that contain '_done' in their names
-          const doneFiles = files.filter(file => file.includes('_done'));
-          expect(doneFiles.length).toBe(0);
-          server.close();
-          done();
-        });
-      }, 5000)
+
     });
   }, 20000);
 });

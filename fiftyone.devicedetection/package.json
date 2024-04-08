@@ -25,7 +25,7 @@
     "fiftyone.devicedetection.shared": "file:../fiftyone.devicedetection.shared"
   },
   "devDependencies": {
-    "eslint": "^8.16.0",
+    "eslint": "8.57.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsdoc": "^38.1.6",

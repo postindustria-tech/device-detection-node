@@ -6,6 +6,8 @@ param (
     [string]$CsvUrl
 )
 
+Write-Output "::notice title=Hello from better main!::fetch-assets successfully un-hardcoded."
+
 # Just a optimization step, not referencing to any logic, except of fetch-assets.ps1
 if ($env:GITHUB_JOB -eq "PreBuild") {
     Write-Output "Skipping assets fetching"

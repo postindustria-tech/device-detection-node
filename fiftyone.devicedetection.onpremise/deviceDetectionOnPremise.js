@@ -430,7 +430,11 @@ class DeviceDetectionOnPremise extends Engine {
      * that an engine can be initialised once the datafile is
      * retrieved if updateOnStart is set to true
      *
+<<<<<<< HEAD
+     * @returns {Promise<void>} init Engine Promise
+=======
      * @returns {void}
+>>>>>>> origin/main
      */
     this.initEngine = function () {
       const engine = new swigWrapper['Engine' + swigWrapperType + 'Swig'](dataFilePath, config, requiredProperties);

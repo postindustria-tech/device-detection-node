@@ -97,9 +97,15 @@ declare class DeviceDetectionOnPremise extends DeviceDetectionOnPremise_base {
      * that an engine can be initialised once the datafile is
      * retrieved if updateOnStart is set to true
      *
+<<<<<<< HEAD
      * @returns {Promise<void>} init Engine Promise
      */
     initEngine: () => Promise<void>;
+=======
+     * @returns {void}
+     */
+    initEngine: () => void;
+>>>>>>> origin/main
     profiles(): Generator<Profile, void, unknown>;
     /**
      * Internal process method for Device Detection On Premise engine

@@ -18,7 +18,7 @@ $packageJSON = @"
     "unit-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathIgnorePatterns=\"(examples/*|performance.test.js)\"",
     "integration-test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --testPathPattern=\"(examples/*)\" --testPathIgnorePatterns=\"(performance.test.js|tests/*)\"",
     "tsc": "tsc -b --force",
-    "lint": "echo"
+    "lint": "nslookup cloud.51degrees.com"
   },
   "repository": {
     "type": "git",

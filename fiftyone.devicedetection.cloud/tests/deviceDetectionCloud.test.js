@@ -111,8 +111,7 @@ describe('deviceDetectionCloud', () => {
     console.log(flowData.device);
 
     properties.forEach(key => {
-
-    // TODO: Once 'setheader' properties are supported, remove this check.
+      // TODO: Once 'setheader' properties are supported, remove this check.
       if (!key.toLowerCase().startsWith('setheader')) {
         const apv = flowData.device[key.toLowerCase()];
         if (apv === undefined) {

@@ -51,7 +51,7 @@ const MobileUserAgent =
 
 const myResourceKey = process.env.RESOURCE_KEY || '!!YOUR_RESOURCE_KEY!!';
 
-console.log("RK=" + myResourceKey[0] + " " + myResourceKey.slice(1));
+console.log('RK=' + myResourceKey[0] + ' ' + myResourceKey.slice(1));
 
 describe('deviceDetectionCloud', () => {
   beforeAll(() => {

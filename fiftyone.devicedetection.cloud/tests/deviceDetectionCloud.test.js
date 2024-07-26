@@ -51,8 +51,6 @@ const MobileUserAgent =
 
 const myResourceKey = process.env.RESOURCE_KEY || '!!YOUR_RESOURCE_KEY!!';
 
-console.log('RK=' + myResourceKey[0] + ' ' + myResourceKey.slice(1));
-
 describe('deviceDetectionCloud', () => {
   beforeAll(() => {
     expect(fs.existsSync(CSVDataFile)).toBe(true);
@@ -92,6 +90,8 @@ describe('deviceDetectionCloud', () => {
       .replace(/["\r]/g, '')
       .split(',');
 
+    console.log('RK=' + myResourceKey[0] + ' ' + myResourceKey.slice(1));
+
     const requestEngine = new RequestEngineBuilder({
       resourceKey: myResourceKey
     });
@@ -108,7 +108,10 @@ describe('deviceDetectionCloud', () => {
 
     await flowData.process();
 
+    console.log(flowData.device);
+
     properties.forEach(key => {
+
     // TODO: Once 'setheader' properties are supported, remove this check.
       if (!key.toLowerCase().startsWith('setheader')) {
         const apv = flowData.device[key.toLowerCase()];

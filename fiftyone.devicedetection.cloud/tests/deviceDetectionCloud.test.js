@@ -108,8 +108,6 @@ describe('deviceDetectionCloud', () => {
 
     await flowData.process();
 
-    console.log(flowData.device);
-
     properties.forEach(key => {
       // TODO: Once 'setheader' properties are supported, remove this check.
       if (!key.toLowerCase().startsWith('setheader')) {
